@@ -1,6 +1,10 @@
 def random_number()
   number = rand(1..100)
 end
+def emptynil(guess)
+  return true if guess.empty? || guess.nil?
+  return false
+end
 
 previous_guesses = []
 correct_number = random_number
@@ -11,6 +15,10 @@ puts "What is your guess?"
 
 loop do
   guess = gets.chomp
+  if emptynil(guess)
+    puts "I pity the fool that doesn't know his numbers!"
+  next
+end
 
   if previous_guesses.include?(guess.to_i)
     puts "I pity the fool who guesses the same thing TWICE! Guess again!"
